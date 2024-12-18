@@ -18,7 +18,7 @@ import androidx.room.PrimaryKey
 data class Jadwal(
     @PrimaryKey
     val idJadwal: String,
-    val idDokter: String,
+    val namaDokter: String,
     val namaPasien: String,
     val noHpPasien: String,
     val tanggal: String,
