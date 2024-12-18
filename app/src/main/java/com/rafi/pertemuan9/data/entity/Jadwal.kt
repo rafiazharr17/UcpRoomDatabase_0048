@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey
         ForeignKey(
             entity = Dokter::class,
             parentColumns = arrayOf("idDokter"),
-            childColumns = arrayOf("dokter"),
+            childColumns = arrayOf("idDokter"),
             onDelete = ForeignKey.CASCADE
         )
     ]
@@ -18,7 +18,7 @@ import androidx.room.PrimaryKey
 data class Jadwal(
     @PrimaryKey
     val idJadwal: String,
-    val namaDokter: String,
+    val idDokter: String,
     val namaPasien: String,
     val noHpPasien: String,
     val tanggal: String,
