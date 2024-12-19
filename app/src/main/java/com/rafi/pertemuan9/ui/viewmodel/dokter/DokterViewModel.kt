@@ -1,4 +1,4 @@
-package com.rafi.pertemuan9.ui.viewmodel
+package com.rafi.pertemuan9.ui.viewmodel.dokter
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
