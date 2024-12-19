@@ -12,5 +12,5 @@ interface RepositoryJadwal {
 
     fun getAllJadwal(): Flow<List<Dokter>>
 
-    fun getJadwal(idJadwal: String): Flow<Dokter>
+    fun getJadwal(idJadwal: Int): Flow<Dokter>
 }
