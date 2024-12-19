@@ -23,5 +23,5 @@ interface JadwalDao {
     fun getAlljadwal(): Flow<List<Jadwal>>
 
     @Query("SELECT * FROM jadwal WHERE idJadwal = :idJadwal")
-    fun getjadwal(idJadwal : String): Flow<Jadwal>
+    fun getJadwal(idJadwal : Int): Flow<Jadwal>
 }
