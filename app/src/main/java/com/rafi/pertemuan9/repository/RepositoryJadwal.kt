@@ -1,16 +1,17 @@
 package com.rafi.pertemuan9.repository
 
 import com.rafi.pertemuan9.data.entity.Dokter
+import com.rafi.pertemuan9.data.entity.Jadwal
 import kotlinx.coroutines.flow.Flow
 
 interface RepositoryJadwal {
-    suspend fun insertJadwal(dokter: Dokter)
+    suspend fun insertJadwal(jadwal: Jadwal)
 
-    suspend fun deleteJadwal(dokter: Dokter)
+    suspend fun deleteJadwal(jadwal: Jadwal)
 
-    suspend fun updateJadwal(dokter: Dokter)
+    suspend fun updateJadwal(jadwal: Jadwal)
 
-    fun getAllJadwal(): Flow<List<Dokter>>
+    fun getAllJadwal(): Flow<List<Jadwal>>
 
-    fun getJadwal(idJadwal: Int): Flow<Dokter>
+    fun getJadwal(idJadwal: Int): Flow<Jadwal>
 }
