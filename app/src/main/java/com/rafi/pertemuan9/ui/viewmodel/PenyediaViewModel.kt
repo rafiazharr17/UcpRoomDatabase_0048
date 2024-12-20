@@ -5,12 +5,20 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.rafi.pertemuan9.JadwalDokterApp
+import com.rafi.pertemuan9.ui.view.dokter.HomeDokterView
 import com.rafi.pertemuan9.ui.viewmodel.dokter.DokterViewModel
+import com.rafi.pertemuan9.ui.viewmodel.dokter.HomeDokterViewModel
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
             DokterViewModel(
+                jadwalDokterApp().containerApp.repositoryDokter
+            )
+        }
+
+        initializer {
+            HomeDokterViewModel(
                 jadwalDokterApp().containerApp.repositoryDokter
             )
         }
