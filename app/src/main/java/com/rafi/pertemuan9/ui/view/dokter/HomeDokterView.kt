@@ -73,7 +73,9 @@ fun HomeDokterView(
                 navigateTambahDokter = onAddDokter,
                 navigateJadwal = navigateLihatJadwal,
                 showTambahDokterButton = true,
-                showJadwalButton = true
+                showJadwalButton = true,
+                showSearch = true,
+                judulSearch = "Cari Dokter"
             )
         },
     ) { innerPadding ->

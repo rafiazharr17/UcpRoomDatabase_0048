@@ -79,7 +79,9 @@ fun InsertDokterView(
                 navigateTambahDokter = {},
                 navigateJadwal = {},
                 showTambahDokterButton = false,
-                showJadwalButton = false
+                showJadwalButton = false,
+                showSearch = false,
+                judulSearch = ""
             )
 
             InsertBodyDokter (
