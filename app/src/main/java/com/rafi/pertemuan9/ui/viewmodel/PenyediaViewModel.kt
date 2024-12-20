@@ -8,6 +8,7 @@ import com.rafi.pertemuan9.JadwalDokterApp
 import com.rafi.pertemuan9.ui.view.dokter.HomeDokterView
 import com.rafi.pertemuan9.ui.viewmodel.dokter.DokterViewModel
 import com.rafi.pertemuan9.ui.viewmodel.dokter.HomeDokterViewModel
+import com.rafi.pertemuan9.ui.viewmodel.jadwal.JadwalViewModel
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
@@ -20,6 +21,12 @@ object PenyediaViewModel {
         initializer {
             HomeDokterViewModel(
                 jadwalDokterApp().containerApp.repositoryDokter
+            )
+        }
+
+        initializer {
+            JadwalViewModel(
+                jadwalDokterApp().containerApp.repositoryJadwal
             )
         }
     }
