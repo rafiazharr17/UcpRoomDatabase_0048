@@ -8,6 +8,7 @@ import com.rafi.pertemuan9.JadwalDokterApp
 import com.rafi.pertemuan9.ui.view.dokter.HomeDokterView
 import com.rafi.pertemuan9.ui.viewmodel.dokter.DokterViewModel
 import com.rafi.pertemuan9.ui.viewmodel.dokter.HomeDokterViewModel
+import com.rafi.pertemuan9.ui.viewmodel.jadwal.HomeJadwalViewModel
 import com.rafi.pertemuan9.ui.viewmodel.jadwal.JadwalViewModel
 
 object PenyediaViewModel {
@@ -26,6 +27,12 @@ object PenyediaViewModel {
 
         initializer {
             JadwalViewModel(
+                jadwalDokterApp().containerApp.repositoryJadwal
+            )
+        }
+
+        initializer {
+            HomeJadwalViewModel(
                 jadwalDokterApp().containerApp.repositoryJadwal
             )
         }
