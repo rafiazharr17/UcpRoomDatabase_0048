@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.rafi.pertemuan9.ui.view.dokter.HomeDokterView
 import com.rafi.pertemuan9.ui.view.dokter.InsertDokterView
+import com.rafi.pertemuan9.ui.view.jadwal.HomeJadwalView
 import com.rafi.pertemuan9.ui.view.jadwal.InsertJadwalView
 
 @Composable
@@ -27,6 +28,9 @@ fun PengelolaHalaman(
                 onAddDokter = {
                     navController.navigate(DestinasiInsertDokter.route)
                 },
+                navigateLihatJadwal = {
+                    navController.navigate(DestinasiHomeJadwal.route)
+                },
                 modifier = modifier
             )
         }
@@ -40,6 +44,21 @@ fun PengelolaHalaman(
                 },
                 onNavigate = {
                     navController.popBackStack()
+                },
+                modifier = modifier
+            )
+        }
+
+        composable(
+            route = DestinasiHomeJadwal.route
+        ) {
+            HomeJadwalView(
+                onDetailClick = {},
+                onAddJadwal = {
+                    navController.navigate(DestinasiInsertJadwal.route)
+                },
+                navigateLihatDokter = {
+                    navController.navigate(DestinasiHomeDokter.route)
                 },
                 modifier = modifier
             )
