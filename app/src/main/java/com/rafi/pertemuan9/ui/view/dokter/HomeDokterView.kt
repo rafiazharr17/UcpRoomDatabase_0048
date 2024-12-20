@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
@@ -39,6 +40,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -159,6 +161,11 @@ fun ListDokter(
 ){
     LazyColumn(
         modifier = modifier
+            .background(
+                color = Color(0xFF00AAEC),
+                shape = RoundedCornerShape(10.dp)
+            )
+            .fillMaxSize()
     ) {
         items(
             items = listDokter,
@@ -185,7 +192,7 @@ fun CardDokter(
         return when (spesialis) {
             "Spesialis Anak" -> Color.Blue
             "Spesialis Bedah Saraf" -> Color.Gray
-            "Spesialis Akupuntur Medik" -> Color.Yellow
+            "Spesialis Akupuntur Medik" -> Color.Magenta
             "Spesialis Bedah" -> Color.Green
             else -> Color.Black
         }

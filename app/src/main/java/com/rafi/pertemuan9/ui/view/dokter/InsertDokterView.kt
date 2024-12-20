@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -127,7 +128,13 @@ fun InsertBodyDokter(
         )
         Button(
             onClick = onClick,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonColors(
+                containerColor = Color(0xFF00AAEC),
+                contentColor = Color.White,
+                disabledContentColor = Color.White,
+                disabledContainerColor = Color(0xFF00AAEC)
+            )
         ) {
             Text("Simpan")
         }
