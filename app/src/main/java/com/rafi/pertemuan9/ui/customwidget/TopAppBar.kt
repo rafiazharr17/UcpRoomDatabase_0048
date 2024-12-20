@@ -41,12 +41,14 @@ fun TopAppBar(
     onBack: () -> Unit,
     showBackButton: Boolean = true,
     showJadwalButton: Boolean = true,
-    showTambahDokterButton: Boolean = true,
+    showDokterButton: Boolean = true,
     showSearch: Boolean = true,
     navigateJadwal: () -> Unit,
-    navigateTambahDokter: () -> Unit,
+    navigateDokter: () -> Unit,
     judul: String,
     judulSearch: String,
+    judulButtonDokter: String,
+    judulButtonJadwal: String,
     modifier: Modifier = Modifier
 ) {
     var search by remember { mutableStateOf("") }
@@ -112,12 +114,12 @@ fun TopAppBar(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            if (showTambahDokterButton){
+            if (showDokterButton){
                 Button(
-                    onClick = navigateTambahDokter
+                    onClick = navigateDokter
                 ) {
                     Text(
-                        text = "Tambah Dokter"
+                        text = judulButtonDokter
                     )
                 }
             }
@@ -127,7 +129,7 @@ fun TopAppBar(
                     onClick = navigateJadwal
                 ) {
                     Text(
-                        text = "Lihat Jadwal"
+                        text = judulButtonJadwal
                     )
                 }
             }
