@@ -11,3 +11,7 @@ object DestinasiInsertDokter : AlamatNavigasi {
 object DestinasiHomeDokter : AlamatNavigasi {
     override val route = "home_dokter"
 }
+
+object DestinasiInsertJadwal : AlamatNavigasi {
+    override val route = "insert_jadwal"
+}
