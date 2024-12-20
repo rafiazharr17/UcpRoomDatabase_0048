@@ -70,12 +70,14 @@ fun HomeDokterView(
                 showBackButton = false,
                 onBack = { },
                 modifier = modifier,
-                navigateTambahDokter = onAddDokter,
+                navigateDokter = onAddDokter,
                 navigateJadwal = navigateLihatJadwal,
-                showTambahDokterButton = true,
+                showDokterButton = true,
                 showJadwalButton = true,
                 showSearch = true,
-                judulSearch = "Cari Dokter"
+                judulSearch = "Cari Dokter",
+                judulButtonDokter = "Tambah Dokter",
+                judulButtonJadwal = "Lihat Jadwal"
             )
         },
     ) { innerPadding ->
