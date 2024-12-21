@@ -1,6 +1,8 @@
 package com.rafi.pertemuan9.ui.view.dokter
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,9 +10,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -27,8 +36,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rafi.pertemuan9.ui.customwidget.TopAppBar
 import com.rafi.pertemuan9.data.objek.PilihSpesialis
@@ -63,30 +75,40 @@ fun InsertDokterView(
         }
     }
 
-    Scaffold(
-        modifier = Modifier,
-        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
-    ) { padding ->
-        Column(
-            modifier = Modifier.fillMaxSize()
-                .padding(padding)
-                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+    Column(
+        modifier = Modifier
+            .background(color = Color(0xFF00AAEC))
+            .fillMaxSize()
+            .padding(top = 10.dp)
+    ) {
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            TopAppBar(
-                onBack = onBack,
-                showBackButton = true,
-                judul = "Tambah Dokter",
-                modifier = modifier,
-                navigateDokter = {},
-                navigateJadwal = {},
-                showDokterButton = false,
-                showJadwalButton = false,
-                showSearch = false,
-                judulSearch = "",
-                judulButtonDokter = "",
-                judulButtonJadwal = ""
-            )
+            IconButton(onClick = onBack) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "",
+                    modifier = Modifier.size(35.dp),
+                    tint = Color.White
+                )
+            }
 
+            Text(
+                text = "Tambah Dokter",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = Color.White
+            )
+            Box {  }
+            Box {  }
+        }
+
+        Card (
+            modifier = Modifier.fillMaxSize(),
+            shape = RectangleShape
+        ) {
             InsertBodyDokter (
                 uiState = uiState,
                 onValueChange = { updatedEvent ->
@@ -116,7 +138,8 @@ fun InsertBodyDokter(
     onClick: () -> Unit
 ){
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

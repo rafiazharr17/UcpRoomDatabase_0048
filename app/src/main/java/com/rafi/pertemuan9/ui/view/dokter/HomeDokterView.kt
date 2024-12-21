@@ -1,6 +1,7 @@
 package com.rafi.pertemuan9.ui.view.dokter
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,7 @@ import androidx.compose.material.icons.sharp.DateRange
 import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material.icons.sharp.Person
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -42,6 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -61,37 +64,61 @@ fun HomeDokterView(
     navigateLihatJadwal: () -> Unit = { },
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        modifier= Modifier
+    Column(
+        modifier = Modifier
+            .background(color = Color(0xFF00AAEC))
             .fillMaxSize()
-            .padding(16.dp)
-            .padding(top = 18.dp),
-        topBar = {
+            .padding(top = 10.dp)
+    ) {
+        Row(
+            modifier = modifier.fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "Klinik Sehat",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = Color.White
+            )
+
+            Icon(
+                imageVector = Icons.Default.AccountCircle,
+                contentDescription = "",
+                modifier = Modifier.size(35.dp),
+                tint = Color.White
+            )
+        }
+
+        Card (
+            modifier = Modifier.fillMaxSize(),
+            shape = RectangleShape
+        ) {
             TopAppBar(
                 judul = "Daftar Dokter",
                 showBackButton = false,
                 onBack = { },
-                modifier = modifier,
+                modifier = Modifier.padding(16.dp),
                 navigateDokter = onAddDokter,
                 navigateJadwal = navigateLihatJadwal,
                 showDokterButton = true,
                 showJadwalButton = true,
                 showSearch = true,
-                judulSearch = "Cari Dokter",
+                judulSearch = "Cari dokter",
                 judulButtonDokter = "Tambah Dokter",
                 judulButtonJadwal = "Lihat Jadwal"
             )
-        },
-    ) { innerPadding ->
-        val homeDokterUiState by viewModel.homeDokterUiState.collectAsState()
 
-        BodyHomeDokterView(
-            homeDokterUiState = homeDokterUiState,
-            onClick = {
-                onDetailClick(it)
-            },
-            modifier = Modifier.padding(innerPadding)
-        )
+            val homeDokterUiState by viewModel.homeDokterUiState.collectAsState()
+
+            BodyHomeDokterView(
+                homeDokterUiState = homeDokterUiState,
+                onClick = {
+                    onDetailClick(it)
+                },
+            )
+        }
     }
 }
 
@@ -110,7 +137,7 @@ fun BodyHomeDokterView(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(color = Color(0xFF00AAEC))
             }
         }
 
@@ -133,6 +160,7 @@ fun BodyHomeDokterView(
                     text = "Tidak ada data dokter.",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
+                    color = Color.Gray,
                     modifier = Modifier.padding(16.dp)
                 )
             }
@@ -143,9 +171,6 @@ fun BodyHomeDokterView(
                 listDokter = homeDokterUiState.listDokter,
                 onClick = {
                     onClick(it)
-                    println(
-                        it
-                    )
                 },
                 modifier = modifier
             )
@@ -158,18 +183,19 @@ fun ListDokter(
     listDokter: List<Dokter>,
     modifier: Modifier = Modifier,
     onClick: (String) -> Unit = { }
-){
+) {
     LazyColumn(
         modifier = modifier
             .background(
-                color = Color(0xFF00AAEC),
+                color = Color.White,
                 shape = RoundedCornerShape(10.dp)
             )
             .fillMaxSize()
+            .padding(8.dp)
     ) {
         items(
             items = listDokter,
-            itemContent = {dokter ->
+            itemContent = { dokter ->
                 CardDokter(
                     dokter = dokter,
                     onClick = {
@@ -190,11 +216,11 @@ fun CardDokter(
 ) {
     fun spesialisColor(spesialis: String): Color {
         return when (spesialis) {
-            "Spesialis Anak" -> Color.Blue
-            "Spesialis Bedah Saraf" -> Color.Gray
-            "Spesialis Akupuntur Medik" -> Color.Magenta
-            "Spesialis Bedah" -> Color.Green
-            else -> Color.Black
+            "Spesialis Anak" -> Color(0xFF42A5F5)
+            "Spesialis Bedah Saraf" -> Color(0xFFAB47BC)
+            "Spesialis Akupuntur Medik" -> Color(0xFF26A69A)
+            "Spesialis Bedah" -> Color(0xFF66BB6A)
+            else -> Color(0xFF757575)
         }
     }
 
@@ -211,7 +237,8 @@ fun CardDokter(
             Icon(
                 imageVector = Icons.Filled.AccountCircle,
                 contentDescription = "",
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(100.dp),
+                tint = Color.Black
             )
             Column(
                 modifier = Modifier.padding(8.dp)
@@ -277,6 +304,5 @@ fun CardDokter(
                 }
             }
         }
-
     }
 }
