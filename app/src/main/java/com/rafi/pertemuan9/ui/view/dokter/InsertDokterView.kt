@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -106,8 +107,7 @@ fun InsertDokterView(
         }
 
         Card (
-            modifier = Modifier.fillMaxSize(),
-            shape = RectangleShape
+            modifier = Modifier.fillMaxSize()
         ) {
             InsertBodyDokter (
                 uiState = uiState,
@@ -189,7 +189,8 @@ fun FormDokter(
             placeholder = {
                 Text("Masukkan Nama Dokter")
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            shape = RoundedCornerShape(10.dp)
         )
         Text(
             text = errorState.namaDokter ?: "",
@@ -227,7 +228,8 @@ fun FormDokter(
             placeholder = {
                 Text("Masukkan Klinik")
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            shape = RoundedCornerShape(10.dp)
         )
         Text(
             text = errorState.klinik ?: "",
@@ -249,7 +251,8 @@ fun FormDokter(
             placeholder = {
                 Text("Masukkan Nomor Handphone")
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            shape = RoundedCornerShape(10.dp)
         )
         Text(
             text = errorState.nomorHpDokter ?: "",
@@ -271,7 +274,8 @@ fun FormDokter(
             placeholder = {
                 Text("Masukkan Jam Kerja")
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            shape = RoundedCornerShape(10.dp)
         )
         Text(
             text = errorState.jamKerja ?: "",
