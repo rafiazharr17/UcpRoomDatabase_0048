@@ -1,6 +1,7 @@
 package com.rafi.pertemuan9.ui.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -8,8 +9,10 @@ import com.rafi.pertemuan9.JadwalDokterApp
 import com.rafi.pertemuan9.ui.view.dokter.HomeDokterView
 import com.rafi.pertemuan9.ui.viewmodel.dokter.DokterViewModel
 import com.rafi.pertemuan9.ui.viewmodel.dokter.HomeDokterViewModel
+import com.rafi.pertemuan9.ui.viewmodel.jadwal.DetailJadwalViewModel
 import com.rafi.pertemuan9.ui.viewmodel.jadwal.HomeJadwalViewModel
 import com.rafi.pertemuan9.ui.viewmodel.jadwal.JadwalViewModel
+import com.rafi.pertemuan9.ui.viewmodel.jadwal.UpdateJadwalViewModel
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
@@ -33,6 +36,20 @@ object PenyediaViewModel {
 
         initializer {
             HomeJadwalViewModel(
+                jadwalDokterApp().containerApp.repositoryJadwal
+            )
+        }
+
+        initializer {
+            DetailJadwalViewModel(
+                createSavedStateHandle(),
+                jadwalDokterApp().containerApp.repositoryJadwal
+            )
+        }
+
+        initializer {
+            UpdateJadwalViewModel(
+                createSavedStateHandle(),
                 jadwalDokterApp().containerApp.repositoryJadwal
             )
         }
