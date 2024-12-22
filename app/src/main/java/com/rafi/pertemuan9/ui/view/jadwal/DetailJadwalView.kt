@@ -103,7 +103,7 @@ fun DetailJadwalView (
 
         FloatingActionButton(
             onClick = {
-                onEditClick(viewModel.detailJadwalUiState.value.detailJadwalUiEvent.idJadwal)
+                onEditClick(viewModel.detailJadwalUiState.value.detailJadwalUiEvent.idJadwal.toString())
             },
             shape = MaterialTheme.shapes.medium,
             modifier = modifier
