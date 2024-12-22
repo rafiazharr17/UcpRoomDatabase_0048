@@ -151,7 +151,8 @@ fun InsertBodyJadwal(
             jadwalEvent = uiState.jadwalEvent,
             onValueChange = onValueChange,
             errorState = uiState.isEntryValid,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            listNamaDokter = uiState.listNamaDokter
         )
         Button(
             onClick = onClick,
