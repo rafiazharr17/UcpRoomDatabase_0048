@@ -23,7 +23,17 @@ class UpdateJadwalViewModel (
 
     private val _idJadwal: Int = checkNotNull(savedStateHandle[DestinasiUpdateJadwal.IDJADWAL])
 
+    private fun listNamaDokter() {
+        viewModelScope.launch {
+            repositoryJadwal.getAllNamaDokter()
+                .collect { dokter ->
+                    updateJadwalUIState = updateJadwalUIState.copy(listNamaDokter = dokter)
+                }
+        }
+    }
+
     init {
+        listNamaDokter()
         viewModelScope.launch {
             updateJadwalUIState = repositoryJadwal.getJadwal(_idJadwal)
                 .filterNotNull()

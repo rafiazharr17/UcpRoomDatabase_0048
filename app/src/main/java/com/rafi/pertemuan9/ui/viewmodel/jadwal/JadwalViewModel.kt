@@ -16,7 +16,18 @@ class JadwalViewModel(
 ): ViewModel(){
     var uiState by mutableStateOf(JadwalUIState())
 
-    val listDokter: Flow<List<Dokter>> = repositoryJadwal.getAllNamaDokter()
+    private fun listNamaDokter() {
+        viewModelScope.launch {
+            repositoryJadwal.getAllNamaDokter()
+                .collect { dokter ->
+                    uiState = uiState.copy(listNamaDokter = dokter)
+                }
+        }
+    }
+
+    init {
+        listNamaDokter()
+    }
 
     fun UpdateState(jadwalEvent: JadwalEvent){
         uiState = uiState.copy(
@@ -105,5 +116,6 @@ data class FormJadwalErrorState(
 data class JadwalUIState(
     val jadwalEvent: JadwalEvent = JadwalEvent(),
     val isEntryValid: FormJadwalErrorState = FormJadwalErrorState(),
-    val snackBarMessage: String? = null
+    val snackBarMessage: String? = null,
+    val listNamaDokter: List<Dokter> = emptyList()
 )
