@@ -49,7 +49,7 @@ fun DetailJadwalView (
     modifier: Modifier = Modifier,
     viewModel: DetailJadwalViewModel = viewModel (factory = PenyediaViewModel.Factory),
     onBack: () -> Unit = { },
-    onEditClick: (Int) -> Unit = { },
+    onEditClick: (String) -> Unit = { },
     onDeleteClick: () -> Unit = { }
 ){
     Box(
