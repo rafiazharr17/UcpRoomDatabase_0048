@@ -229,13 +229,6 @@ fun FormJadwal(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Mengambil Data Nama Dokter dari ViewModel
-        LaunchedEffect (Unit) {
-            viewModel.listDokter.collect { dokterList ->
-                opsiPilihDokter = dokterList.map { it.namaDokter }
-            }
-        }
-
         DynamicSelectedTextField(
             selectedValue = chosenDropdown,
             options = opsiPilihDokter,
