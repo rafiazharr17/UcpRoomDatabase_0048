@@ -42,6 +42,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.rafi.pertemuan9.data.entity.Dokter
 import com.rafi.pertemuan9.ui.customwidget.DynamicSelectedTextField
 import com.rafi.pertemuan9.ui.customwidget.TopAppBar
 import com.rafi.pertemuan9.ui.view.dokter.FormDokter
@@ -171,9 +172,9 @@ fun InsertBodyJadwal(
 @Composable
 fun FormJadwal(
     jadwalEvent: JadwalEvent = JadwalEvent(),
-    viewModel: JadwalViewModel = viewModel(),
     onValueChange: (JadwalEvent) -> Unit,
     errorState: FormJadwalErrorState = FormJadwalErrorState(),
+    listNamaDokter: List<Dokter>,
     modifier: Modifier = Modifier
 ){
     var chosenDropdown by remember { mutableStateOf("") }
