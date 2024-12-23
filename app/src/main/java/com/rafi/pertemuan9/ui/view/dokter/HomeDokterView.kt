@@ -318,7 +318,7 @@ fun CardDokter(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = Icons.Sharp.DateRange,
+                        painter = painterResource(id = R.drawable.waktu),
                         contentDescription = ""
                     )
                     Spacer(modifier = Modifier.padding(4.dp))
