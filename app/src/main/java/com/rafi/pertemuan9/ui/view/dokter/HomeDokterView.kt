@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.rounded.Home
@@ -96,9 +97,9 @@ fun HomeDokterView(
 
 
             Icon(
-                imageVector = Icons.Default.AccountCircle,
+                imageVector = Icons.Default.Notifications,
                 contentDescription = "",
-                modifier = Modifier.size(50.dp),
+                modifier = Modifier.size(40.dp),
                 tint = Color.White
             )
         }

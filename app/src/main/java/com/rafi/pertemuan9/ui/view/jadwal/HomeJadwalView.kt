@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.sharp.DateRange
 import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material.icons.sharp.Phone
@@ -87,9 +88,9 @@ fun HomeJadwalView(
 
 
             Icon(
-                imageVector = Icons.Default.AccountCircle,
+                imageVector = Icons.Default.Notifications,
                 contentDescription = "",
-                modifier = Modifier.size(50.dp),
+                modifier = Modifier.size(40.dp),
                 tint = Color.White
             )
         }
