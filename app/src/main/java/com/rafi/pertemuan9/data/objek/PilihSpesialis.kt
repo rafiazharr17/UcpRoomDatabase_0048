@@ -5,6 +5,7 @@ object PilihSpesialis {
         "Spesialis Anak",
         "Spesialis Bedah Saraf",
         "Spesialis Akupuntur Medik",
-        "Spesialis Bedah"
+        "Spesialis Bedah",
+        "Spesialis Umum"
     )
 }
