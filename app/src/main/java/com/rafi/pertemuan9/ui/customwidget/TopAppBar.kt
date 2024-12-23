@@ -77,7 +77,7 @@ fun TopAppBar(
             fontSize = 30.sp,
             color = Color.White,
             modifier = Modifier.padding(start = 10.dp),
-            fontFamily = FontFamily.Cursive
+            fontFamily = FontFamily.Serif
         )
 
 
