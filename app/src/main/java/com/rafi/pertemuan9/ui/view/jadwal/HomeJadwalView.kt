@@ -68,18 +68,28 @@ fun HomeJadwalView(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = "Klinik Sehat",
-                fontWeight = FontWeight.Bold,
-                fontSize = 25.sp,
-                color = Color.White,
-                fontFamily = FontFamily.Serif
-            )
+            Column {
+                Text(
+                    text = "Klinik Sehat",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    color = Color.White,
+                    fontFamily = FontFamily.Serif
+                )
+                Text(
+                    text = "Rafi Alif Azhar",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp,
+                    color = Color.White,
+                    fontFamily = FontFamily.Cursive
+                )
+            }
+
 
             Icon(
                 imageVector = Icons.Default.AccountCircle,
                 contentDescription = "",
-                modifier = Modifier.size(35.dp),
+                modifier = Modifier.size(50.dp),
                 tint = Color.White
             )
         }
