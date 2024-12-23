@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -38,6 +39,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,8 +50,6 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBar(
-    onBack: () -> Unit,
-    showBackButton: Boolean = true,
     showJadwalButton: Boolean = true,
     showDokterButton: Boolean = true,
     showSearch: Boolean = true,
@@ -65,37 +66,19 @@ fun TopAppBar(
     Column(
         modifier = modifier.fillMaxWidth()
             .background(
-                color = Color(0xFF00AAEC),
-                shape = RoundedCornerShape(10.dp)
-            )
+                color = Color(0xFFFF5722),
+                shape = RoundedCornerShape(bottomStart = 70.dp, topEnd = 70.dp)
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
-            modifier = Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (showBackButton) {
-                    IconButton (onClick = onBack) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back",
-                            tint = Color.White
-                        )
-                    }
-                }
-
-                Text(
-                    text = judul,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 30.sp,
-                    color = Color.White,
-                    modifier = Modifier.padding(start = 10.dp)
-                )
-            }
-        }
+        Text(
+            text = judul,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
+            color = Color.White,
+            modifier = Modifier.padding(start = 10.dp),
+            fontFamily = FontFamily.Cursive
+        )
 
 
         if (showSearch){
@@ -115,7 +98,7 @@ fun TopAppBar(
                     )
                 },
                 colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.LightGray,
+                    containerColor = Color.White,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
@@ -130,20 +113,34 @@ fun TopAppBar(
         ) {
             if (showDokterButton){
                 Button(
-                    onClick = navigateDokter
+                    onClick = navigateDokter,
+                    colors = ButtonColors(
+                        contentColor = Color(0xFFFF5722),
+                        disabledContentColor = Color(0xFFFF5722),
+                        containerColor = Color.White,
+                        disabledContainerColor = Color.White
+                    )
                 ) {
                     Text(
-                        text = judulButtonDokter
+                        text = judulButtonDokter,
+                        fontWeight = FontWeight.Bold
                     )
                 }
             }
 
             if (showJadwalButton){
                 Button(
-                    onClick = navigateJadwal
+                    onClick = navigateJadwal,
+                    colors = ButtonColors(
+                        contentColor = Color(0xFFFF5722),
+                        disabledContentColor = Color(0xFFFF5722),
+                        containerColor = Color.White,
+                        disabledContainerColor = Color.White
+                    )
                 ) {
                     Text(
-                        text = judulButtonJadwal
+                        text = judulButtonJadwal,
+                        fontWeight = FontWeight.Bold
                     )
                 }
             }
