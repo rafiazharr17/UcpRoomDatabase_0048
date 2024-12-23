@@ -23,6 +23,7 @@ import androidx.compose.material.icons.sharp.Phone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
@@ -245,9 +246,19 @@ fun CardJadwal(
                     Text(
                         text = jadwal.namaPasien,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        color = Color.Black,
+                        fontFamily = FontFamily.Serif
                     )
                 }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                HorizontalDivider(
+                    modifier = Modifier.fillMaxWidth(),
+                    thickness = 2.dp,
+                    color = Color.Black
+                )
 
                 Spacer(modifier = Modifier.height(6.dp))
 
