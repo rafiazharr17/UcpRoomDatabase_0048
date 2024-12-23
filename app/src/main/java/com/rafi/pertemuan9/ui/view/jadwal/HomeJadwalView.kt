@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -257,6 +258,7 @@ fun CardJadwal(
                     Text(
                         text = jadwal.status,
                         fontWeight = FontWeight.Bold,
+                        fontStyle = FontStyle.Italic
                     )
                 }
 

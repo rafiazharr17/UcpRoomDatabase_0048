@@ -47,6 +47,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -274,7 +275,8 @@ fun CardDokter(
                     Text(
                         text = dokter.spesialis,
                         fontWeight = FontWeight.Bold,
-                        color = spesialisColor(dokter.spesialis)
+                        color = spesialisColor(dokter.spesialis),
+                        fontStyle = FontStyle.Italic
                     )
                 }
 
