@@ -153,7 +153,6 @@ fun InsertBodyJadwal(
             onValueChange = onValueChange,
             errorState = uiState.isEntryValid,
             modifier = Modifier.fillMaxWidth(),
-            listNamaDokter = uiState.listNamaDokter
         )
         Button(
             onClick = onClick,
@@ -179,7 +178,6 @@ fun FormJadwal(
     jadwalEvent: JadwalEvent = JadwalEvent(),
     onValueChange: (JadwalEvent) -> Unit,
     errorState: FormJadwalErrorState = FormJadwalErrorState(),
-    listNamaDokter: List<Dokter>,
     modifier: Modifier = Modifier
 ){
     var chosenDropdown by remember { mutableStateOf("") }
