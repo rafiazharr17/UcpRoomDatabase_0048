@@ -46,12 +46,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.rafi.pertemuan9.R
 import com.rafi.pertemuan9.ui.customwidget.TopAppBar
 import com.rafi.pertemuan9.data.entity.Dokter
 import com.rafi.pertemuan9.ui.viewmodel.PenyediaViewModel
@@ -287,7 +289,7 @@ fun CardDokter(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = Icons.Sharp.Home,
+                        painter = painterResource(id = R.drawable.icon_hospital),
                         contentDescription = ""
                     )
                     Spacer(modifier = Modifier.padding(4.dp))
