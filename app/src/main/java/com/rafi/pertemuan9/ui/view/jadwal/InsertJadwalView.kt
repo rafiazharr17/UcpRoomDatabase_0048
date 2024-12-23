@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rafi.pertemuan9.data.entity.Dokter
+import com.rafi.pertemuan9.data.objek.ListNamaDokter
 import com.rafi.pertemuan9.ui.customwidget.DynamicSelectedTextField
 import com.rafi.pertemuan9.ui.customwidget.TopAppBar
 import com.rafi.pertemuan9.ui.view.dokter.FormDokter
@@ -233,9 +234,7 @@ fun FormJadwal(
 
         DynamicSelectedTextField(
             selectedValue = jadwalEvent.dokter,
-            options = listNamaDokter.map { it.namaDokter }.also {
-                println("Dropdown options: $it")
-            },
+            options = ListNamaDokter.opsiPilihDokter(),
             label = "Pilih Nama Dokter",
             onValueChangedEvent = {
                 onValueChange(jadwalEvent.copy(dokter = it))
