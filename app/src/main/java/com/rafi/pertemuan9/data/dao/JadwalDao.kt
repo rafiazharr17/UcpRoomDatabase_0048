@@ -25,7 +25,4 @@ interface JadwalDao {
 
     @Query("SELECT * FROM jadwal WHERE idJadwal = :idJadwal")
     fun getJadwal(idJadwal : Int): Flow<Jadwal>
-
-    @Query("SELECT * FROM dokter ORDER BY namaDokter DESC")
-    fun getAllNamaDokter(): Flow<List<Dokter>>
 }

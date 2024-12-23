@@ -27,8 +27,4 @@ class LocalRepositoryJadwal(
     override fun getJadwal(idJadwal: Int): Flow<Jadwal> {
         return jadwalDao.getJadwal(idJadwal)
     }
-
-    override fun getAllNamaDokter(): Flow<List<Dokter>> {
-        return jadwalDao.getAllNamaDokter()
-    }
 }
