@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
@@ -62,37 +64,36 @@ fun UpdateJadwalView(
     }
 
     Column(
-        modifier = Modifier
-            .background(color = Color(0xFF00AAEC))
-            .fillMaxSize()
-            .padding(top = 10.dp)
+        modifier = Modifier.fillMaxSize()
+            .background(color = Color(0xFFFF5722))
     ) {
         Row(
-            modifier = modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier.fillMaxWidth()
+                .background(color = Color.White)
+                .padding(top = 30.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "",
-                    modifier = Modifier.size(35.dp),
-                    tint = Color.White
+                    contentDescription = ""
                 )
             }
-
+            Spacer(modifier = Modifier.padding(start = 60.dp))
             Text(
                 text = "Update Jadwal",
                 fontWeight = FontWeight.Bold,
-                fontSize = 25.sp,
-                color = Color.White
+                fontSize = 30.sp
             )
-            Box {  }
-            Box {  }
         }
 
-        Card (
+        Box (
             modifier = Modifier.fillMaxSize()
+                .padding(16.dp)
+                .background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
+                )
         ) {
             InsertBodyJadwal (
                 uiState = uiJadwalState,

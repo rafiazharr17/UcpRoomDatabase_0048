@@ -45,6 +45,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -66,7 +67,7 @@ fun HomeDokterView(
 ) {
     Column(
         modifier = Modifier
-            .background(color = Color(0xFF00AAEC))
+            .background(color = Color(0xFFFF5722))
             .fillMaxSize()
             .padding(top = 10.dp)
     ) {
@@ -80,7 +81,8 @@ fun HomeDokterView(
                 text = "Klinik Sehat",
                 fontWeight = FontWeight.Bold,
                 fontSize = 25.sp,
-                color = Color.White
+                color = Color.White,
+                fontFamily = FontFamily.Serif
             )
 
             Icon(
@@ -97,8 +99,6 @@ fun HomeDokterView(
         ) {
             TopAppBar(
                 judul = "Daftar Dokter",
-                showBackButton = false,
-                onBack = { },
                 modifier = Modifier.padding(16.dp),
                 navigateDokter = onAddDokter,
                 navigateJadwal = navigateLihatJadwal,
@@ -238,7 +238,7 @@ fun CardDokter(
                 imageVector = Icons.Filled.AccountCircle,
                 contentDescription = "",
                 modifier = Modifier.size(100.dp),
-                tint = Color.Black
+                tint = Color(0xFFFF5722)
             )
             Column(
                 modifier = Modifier.padding(8.dp)

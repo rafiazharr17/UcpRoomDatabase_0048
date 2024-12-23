@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,7 +58,7 @@ fun HomeJadwalView(
 ) {
     Column(
         modifier = Modifier
-            .background(color = Color(0xFF00AAEC))
+            .background(color = Color(0xFFFF5722))
             .fillMaxSize()
             .padding(top = 10.dp)
     ) {
@@ -71,7 +72,8 @@ fun HomeJadwalView(
                 text = "Klinik Sehat",
                 fontWeight = FontWeight.Bold,
                 fontSize = 25.sp,
-                color = Color.White
+                color = Color.White,
+                fontFamily = FontFamily.Serif
             )
 
             Icon(
@@ -88,8 +90,6 @@ fun HomeJadwalView(
         ) {
             TopAppBar(
                 judul = "Daftar Jadwal",
-                showBackButton = false,
-                onBack = { },
                 modifier = Modifier.padding(16.dp),
                 navigateDokter = navigateLihatDokter,
                 navigateJadwal = onAddJadwal,
@@ -220,7 +220,8 @@ fun CardJadwal(
             Icon(
                 imageVector = Icons.Filled.AccountCircle,
                 contentDescription = "",
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(100.dp),
+                tint = Color(0xFFFF5722)
             )
             Column(
                 modifier = Modifier.padding(8.dp)

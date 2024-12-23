@@ -37,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -81,37 +82,37 @@ fun InsertJadwalView(
     }
 
     Column(
-        modifier = Modifier
-            .background(color = Color(0xFF00AAEC))
-            .fillMaxSize()
-            .padding(top = 10.dp)
+        modifier = Modifier.fillMaxSize()
+            .background(color = Color(0xFFFF5722))
     ) {
         Row(
-            modifier = modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier.fillMaxWidth()
+                .background(color = Color.White)
+                .padding(top = 30.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "",
-                    modifier = Modifier.size(35.dp),
-                    tint = Color.White
+                    contentDescription = ""
                 )
             }
-
+            Spacer(modifier = Modifier.padding(start = 40.dp))
             Text(
                 text = "Tambah Jadwal",
                 fontWeight = FontWeight.Bold,
-                fontSize = 25.sp,
-                color = Color.White
+                fontSize = 30.sp,
+                fontFamily = FontFamily.Serif
             )
-            Box {  }
-            Box {  }
         }
 
-        Card (
+        Box (
             modifier = Modifier.fillMaxSize()
+                .padding(16.dp)
+                .background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
+                )
         ) {
             InsertBodyJadwal (
                 uiState = uiState,
@@ -158,13 +159,16 @@ fun InsertBodyJadwal(
             onClick = onClick,
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonColors(
-                containerColor = Color(0xFF00AAEC),
                 contentColor = Color.White,
                 disabledContentColor = Color.White,
-                disabledContainerColor = Color(0xFF00AAEC)
+                containerColor = Color(0xFFFF5722),
+                disabledContainerColor = Color(0xFFFF5722)
             )
         ) {
-            Text("Simpan")
+            Text(
+                text = "Simpan",
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }

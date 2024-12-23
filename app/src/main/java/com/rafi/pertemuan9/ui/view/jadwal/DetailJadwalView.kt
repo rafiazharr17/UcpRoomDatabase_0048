@@ -10,11 +10,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -33,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,71 +55,66 @@ fun DetailJadwalView (
     onEditClick: (String) -> Unit = { },
     onDeleteClick: () -> Unit = { }
 ){
-    Box(
-        modifier = Modifier
-            .background(color = Color(0xFF00AAEC))
-            .fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 10.dp)
-        ) {
-            Row(
-                modifier = modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                IconButton(onClick = onBack) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "",
-                        modifier = Modifier.size(35.dp),
-                        tint = Color.White
-                    )
-                }
+   Column(
+       modifier = Modifier.fillMaxSize()
+           .background(color = Color(0xFFFF5722))
+   ) {
+       Row(
+           modifier = Modifier.fillMaxWidth()
+               .background(color = Color.White)
+               .padding(top = 30.dp),
+           verticalAlignment = Alignment.CenterVertically
+       ) {
+           IconButton(onClick = onBack) {
+               Icon(
+                   imageVector = Icons.Default.ArrowBack,
+                   contentDescription = ""
+               )
+           }
+           Spacer(modifier = Modifier.padding(start = 65.dp))
+           Text(
+               text = "Detail Jadwal",
+               fontWeight = FontWeight.Bold,
+               fontSize = 30.sp
+           )
+       }
 
-                Text(
-                    text = "Detail Jadwal",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp,
-                    color = Color.White
-                )
-                Box {  }
-                Box {  }
-            }
+       Box (
+           modifier = Modifier.fillMaxSize()
+               .padding(16.dp)
+               .background(
+                   color = Color.White,
+                   shape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
+               )
+       ) {
+           val detailJadwalUiState by viewModel.detailJadwalUiState.collectAsState()
 
-            Card(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                val detailJadwalUiState by viewModel.detailJadwalUiState.collectAsState()
+           BodyDetailJadwal(
+               detailJadwalUiState = detailJadwalUiState,
+               onDeleteClick = {
+                   viewModel.deleteMhs()
+                   onDeleteClick()
+               }
+           )
 
-                BodyDetailJadwal(
-                    detailJadwalUiState = detailJadwalUiState,
-                    onDeleteClick = {
-                        viewModel.deleteMhs()
-                        onDeleteClick()
-                    }
-                )
-            }
-        }
-
-        FloatingActionButton(
-            onClick = {
-                onEditClick(viewModel.detailJadwalUiState.value.detailJadwalUiEvent.idJadwal.toString())
-            },
-            shape = MaterialTheme.shapes.medium,
-            modifier = modifier
-                .align(Alignment.BottomEnd)
-                .padding(16.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Edit,
-                contentDescription = "Edit Jadwal",
-            )
-        }
-
-    }
+           FloatingActionButton(
+               onClick = {
+                   onEditClick(viewModel.detailJadwalUiState.value.detailJadwalUiEvent.idJadwal.toString())
+               },
+               shape = MaterialTheme.shapes.medium,
+               modifier = modifier
+                   .align(Alignment.BottomEnd)
+                   .padding(16.dp),
+               containerColor = Color(0xFFFF5722)
+           ) {
+               Icon(
+                   imageVector = Icons.Default.Edit,
+                   contentDescription = "Edit Jadwal",
+                   tint = Color.White
+               )
+           }
+       }
+   }
 }
 
 
@@ -152,9 +150,15 @@ fun BodyDetailJadwal (
                     onClick = {
                         deleteConfirmationRequired = true
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonColors(
+                        contentColor = Color.White,
+                        disabledContentColor = Color.White,
+                        containerColor = Color(0xFFFF5722),
+                        disabledContainerColor = Color(0xFFFF5722)
+                    )
                 ) {
-                    Text(text = "Delete")
+                    Text(text = "Delete", fontWeight = FontWeight.Bold)
                 }
                 if (deleteConfirmationRequired) {
                     DeleteConfirmationDialog(
@@ -192,8 +196,8 @@ fun ItemDetailJadwal (
         modifier = modifier
             .fillMaxWidth (),
         colors = CardDefaults.cardColors (
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            containerColor = Color(0xFFFF5722),
+            contentColor = Color.White
         )
     ){
         Column (
@@ -228,7 +232,8 @@ fun ComponentDetailJadwal (
             text = "$judul : ",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Gray
+            color = Color.Black,
+            fontStyle = FontStyle.Italic
 
         )
         Text(
