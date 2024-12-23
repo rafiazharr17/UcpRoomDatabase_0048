@@ -70,7 +70,7 @@ fun HomeJadwalView(
         ) {
             Column {
                 Text(
-                    text = "Klinik Sehat",
+                    text = "Rumah Sehat",
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
                     color = Color.White,
