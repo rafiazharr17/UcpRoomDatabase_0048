@@ -50,15 +50,10 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBar(
-    showJadwalButton: Boolean = true,
-    showDokterButton: Boolean = true,
-    showSearch: Boolean = true,
-    navigateJadwal: () -> Unit,
-    navigateDokter: () -> Unit,
+    navigate: () -> Unit,
     judul: String,
     judulSearch: String,
-    judulButtonDokter: String,
-    judulButtonJadwal: String,
+    judulButton: String,
     modifier: Modifier
 ) {
     var search by remember { mutableStateOf("") }
@@ -66,7 +61,12 @@ fun TopAppBar(
     Column(
         modifier = modifier.fillMaxWidth()
             .background(
-                color = Color(0xFFFF5722),
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        Color(0xFFFFC107),
+                        Color(0xFFFF5722)
+                    )
+                ),
                 shape = RoundedCornerShape(bottomStart = 70.dp, topEnd = 70.dp)
             ),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -76,74 +76,48 @@ fun TopAppBar(
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
             color = Color.White,
-            modifier = Modifier.padding(start = 10.dp),
-            fontFamily = FontFamily.Serif
+            fontFamily = FontFamily.Serif,
+            modifier = Modifier.padding(top = 10.dp)
         )
 
+        Spacer(modifier = Modifier.height(10.dp))
+        TextField(
+            value = search,
+            onValueChange = { search = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 10.dp, end = 10.dp),
+            placeholder = { Text(text = judulSearch) },
+            singleLine = true,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search"
+                )
+            },
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.White,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(15.dp)
+        )
 
-        if (showSearch){
-            Spacer(modifier = Modifier.height(10.dp))
-            TextField(
-                value = search,
-                onValueChange = { search = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp),
-                placeholder = { Text(text = judulSearch) },
-                singleLine = true,
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "Search"
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                ),
-                shape = RoundedCornerShape(15.dp)
-            )
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(10.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+        Spacer(modifier = Modifier.height(10.dp))
+        Button(
+            onClick = navigate,
+            colors = ButtonColors(
+                contentColor = Color(0xFFFF5722),
+                disabledContentColor = Color(0xFFFF5722),
+                containerColor = Color.White,
+                disabledContainerColor = Color.White
+            ),
+            modifier = Modifier.padding(bottom = 5.dp)
         ) {
-            if (showDokterButton){
-                Button(
-                    onClick = navigateDokter,
-                    colors = ButtonColors(
-                        contentColor = Color(0xFFFF5722),
-                        disabledContentColor = Color(0xFFFF5722),
-                        containerColor = Color.White,
-                        disabledContainerColor = Color.White
-                    )
-                ) {
-                    Text(
-                        text = judulButtonDokter,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
-
-            if (showJadwalButton){
-                Button(
-                    onClick = navigateJadwal,
-                    colors = ButtonColors(
-                        contentColor = Color(0xFFFF5722),
-                        disabledContentColor = Color(0xFFFF5722),
-                        containerColor = Color.White,
-                        disabledContainerColor = Color.White
-                    )
-                ) {
-                    Text(
-                        text = judulButtonJadwal,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
+            Text(
+                text = judulButton,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
