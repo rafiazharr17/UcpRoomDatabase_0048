@@ -37,6 +37,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontFamily
@@ -80,7 +81,14 @@ fun InsertDokterView(
 
     Column(
         modifier = Modifier.fillMaxSize()
-            .background(color = Color(0xFFFF5722))
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFFFFC107),
+                        Color(0xFFFF5722)
+                    )
+                )
+            )
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
