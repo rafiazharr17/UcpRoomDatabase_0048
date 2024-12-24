@@ -20,7 +20,7 @@ interface JadwalDao {
     @Update
     suspend fun updatejadwal(jadwal: Jadwal)
 
-    @Query("SELECT * FROM jadwal ORDER BY namaPasien ASC")
+    @Query("SELECT * FROM jadwal ORDER BY idJadwal ASC ")
     fun getAlljadwal(): Flow<List<Jadwal>>
 
     @Query("SELECT * FROM jadwal WHERE idJadwal = :idJadwal")
