@@ -51,7 +51,7 @@ class DetailJadwalViewModel (
             )
         )
 
-    fun deleteMhs() {
+    fun deleteJadwal() {
         detailJadwalUiState.value.detailJadwalUiEvent.toJadwalEntity().let {
             viewModelScope.launch {
                 repositoryJadwal.deleteJadwal(it)
