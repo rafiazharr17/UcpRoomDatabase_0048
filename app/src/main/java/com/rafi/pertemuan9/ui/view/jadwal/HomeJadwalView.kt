@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.sharp.DateRange
 import androidx.compose.material.icons.sharp.Home
@@ -23,8 +24,10 @@ import androidx.compose.material.icons.sharp.Phone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -36,6 +39,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontFamily
@@ -61,7 +65,14 @@ fun HomeJadwalView(
 ) {
     Column(
         modifier = Modifier
-            .background(color = Color(0xFFFF5722))
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        Color(0xFFFF5722),
+                        Color(0xFFFFC107)
+                    )
+                )
+            )
             .fillMaxSize()
             .padding(top = 10.dp)
     ) {
@@ -97,32 +108,53 @@ fun HomeJadwalView(
             )
         }
 
-        Card (
-            modifier = Modifier.fillMaxSize(),
-            shape = RectangleShape
-        ) {
+        Card {
             TopAppBar(
                 judul = "Daftar Jadwal",
                 modifier = Modifier.padding(16.dp),
-                navigateDokter = navigateLihatDokter,
-                navigateJadwal = onAddJadwal,
-                showDokterButton = true,
-                showJadwalButton = true,
-                showSearch = true,
+                navigate = navigateLihatDokter,
                 judulSearch = "Cari Jadwal",
-                judulButtonJadwal = "Tambah Jadwal",
-                judulButtonDokter = "Lihat Dokter"
+                judulButton = "Lihat Dokter"
             )
 
-            val homeJadwalUiState by viewModel.homeJadwalUiState.collectAsState()
+            Box (
+                modifier = Modifier.fillMaxSize()
+                    .padding(16.dp)
+                    .background(
+                        color = Color.White,
+                        shape = RoundedCornerShape(10.dp)
+                    )
+            ) {
 
-            BodyHomeJadwalView(
-                homeJadwalUiState = homeJadwalUiState,
-                onClick = {
-                    onDetailClick(it)
+
+                val homeJadwalUiState by viewModel.homeJadwalUiState.collectAsState()
+
+                BodyHomeJadwalView(
+                    homeJadwalUiState = homeJadwalUiState,
+                    onClick = {
+                        onDetailClick(it)
+                    }
+                )
+
+                FloatingActionButton(
+                    onClick = onAddJadwal,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp),
+                    containerColor = Color(0xFFFF5722)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Tambah Jadwal",
+                        tint = Color.White,
+                        modifier = Modifier.size(40.dp)
+                    )
                 }
-            )
+            }
         }
+
+
     }
 }
 

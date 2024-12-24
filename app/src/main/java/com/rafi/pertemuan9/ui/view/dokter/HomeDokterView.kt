@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
@@ -45,6 +46,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
@@ -72,7 +74,14 @@ fun HomeDokterView(
 ) {
     Column(
         modifier = Modifier
-            .background(color = Color(0xFFFF5722))
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        Color(0xFFFF5722),
+                        Color(0xFFFFC107)
+                    )
+                )
+            )
             .fillMaxSize()
             .padding(top = 10.dp)
     ) {
@@ -108,31 +117,48 @@ fun HomeDokterView(
             )
         }
 
-        Card (
-            modifier = Modifier.fillMaxSize(),
-            shape = RectangleShape
-        ) {
+        Card {
             TopAppBar(
                 judul = "Daftar Dokter",
                 modifier = Modifier.padding(16.dp),
-                navigateDokter = onAddDokter,
-                navigateJadwal = navigateLihatJadwal,
-                showDokterButton = true,
-                showJadwalButton = true,
-                showSearch = true,
-                judulSearch = "Cari dokter",
-                judulButtonDokter = "Tambah Dokter",
-                judulButtonJadwal = "Lihat Jadwal"
+                navigate = navigateLihatJadwal,
+                judulSearch = "Cari Dokter",
+                judulButton = "Lihat Jadwal"
             )
 
-            val homeDokterUiState by viewModel.homeDokterUiState.collectAsState()
+            Box (
+                modifier = Modifier.fillMaxSize()
+                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                    .background(
+                        color = Color.White,
+                        shape = RoundedCornerShape(10.dp)
+                    )
+            ) {
+                val homeDokterUiState by viewModel.homeDokterUiState.collectAsState()
 
-            BodyHomeDokterView(
-                homeDokterUiState = homeDokterUiState,
-                onClick = {
-                    onDetailClick(it)
-                },
-            )
+                BodyHomeDokterView(
+                    homeDokterUiState = homeDokterUiState,
+                    onClick = {
+                        onDetailClick(it)
+                    },
+                )
+
+                FloatingActionButton(
+                    onClick = onAddDokter,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp),
+                    containerColor = Color(0xFFFF5722)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Tambah Dokter",
+                        tint = Color.White,
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
+            }
         }
     }
 }
